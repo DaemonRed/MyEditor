@@ -52,9 +52,9 @@
             this.fontColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.visualStyler1 = new SkinSoft.VisualStyler.VisualStyler(this.components);
             this.lblLineCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblWordCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.visualStyler1 = new SkinSoft.VisualStyler.VisualStyler(this.components);
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.visualStyler1)).BeginInit();
@@ -68,9 +68,10 @@
             this.rtbTextArea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rtbTextArea.Location = new System.Drawing.Point(12, 27);
             this.rtbTextArea.Name = "rtbTextArea";
-            this.rtbTextArea.Size = new System.Drawing.Size(580, 319);
+            this.rtbTextArea.Size = new System.Drawing.Size(568, 319);
             this.rtbTextArea.TabIndex = 0;
             this.rtbTextArea.Text = "";
+            this.rtbTextArea.TextChanged += new System.EventHandler(this.rtbTextArea_TextChanged);
             // 
             // menuBar
             // 
@@ -229,23 +230,23 @@
             this.statusBar.TabIndex = 2;
             this.statusBar.Text = "statusStrip1";
             // 
+            // lblLineCount
+            // 
+            this.lblLineCount.Name = "lblLineCount";
+            this.lblLineCount.Size = new System.Drawing.Size(46, 17);
+            this.lblLineCount.Text = "Lines: 0";
+            // 
+            // lblWordCount
+            // 
+            this.lblWordCount.Name = "lblWordCount";
+            this.lblWordCount.Size = new System.Drawing.Size(53, 17);
+            this.lblWordCount.Text = "Words: 0";
+            // 
             // visualStyler1
             // 
             this.visualStyler1.HostForm = this;
             this.visualStyler1.License = ((SkinSoft.VisualStyler.Licensing.VisualStylerLicense)(resources.GetObject("visualStyler1.License")));
             this.visualStyler1.LoadVisualStyle(null, "OSX (Tiger).vssf");
-            // 
-            // lblLineCount
-            // 
-            this.lblLineCount.Name = "lblLineCount";
-            this.lblLineCount.Size = new System.Drawing.Size(37, 17);
-            this.lblLineCount.Text = "Lines:";
-            // 
-            // lblWordCount
-            // 
-            this.lblWordCount.Name = "lblWordCount";
-            this.lblWordCount.Size = new System.Drawing.Size(44, 17);
-            this.lblWordCount.Text = "Words:";
             // 
             // mainForm
             // 
