@@ -13,7 +13,10 @@ namespace NewApp
     public partial class mainForm : Form
     {
         int lineCount = 0;
-        const String Title = "MyEditor v0.1";
+        bool fileSaved = false;
+        String loadedFilePath;
+
+        const String appTitle = "MyEditor v0.1";
         public mainForm()
         {
             InitializeComponent();
@@ -23,9 +26,10 @@ namespace NewApp
         {
             this.Close();
         }
-
+        
         private void rtbTextArea_TextChanged(object sender, EventArgs e)
         {
+            fileSaved = false;
             if (rtbTextArea.Text.Length == 0)
             {
                 lblLineCount.Text = "Lines: 1";
@@ -105,8 +109,38 @@ namespace NewApp
                 rtbTextArea.BackColor = cd.Color;
         }
 
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtbTextArea.Clear();
+            this.Text = appTitle;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFile();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFile();
+        }
+
+        private void SaveFile()
+        {
+          if(fileSaved)
+          {
+              rtbTextArea.SaveFile(loadedFilePath);
+              fileSaved = true;
+          }
+          else
+          {
+              if (dlgSaveFile.ShowDialog() == DialogResult.OK)
+              {
+                  rtbTextArea.SaveFile(dlgSaveFile.FileName, RichTextBoxStreamType.PlainText);
+              }
+          }
+        }
 
         
-
     }
 }
