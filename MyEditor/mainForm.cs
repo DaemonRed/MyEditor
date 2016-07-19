@@ -14,7 +14,7 @@ namespace NewApp
     {
         int lineCount = 0;
         bool fileSaved = false;
-        String loadedFilePath;
+        String loadedFilePath = "";
 
         const String appTitle = "MyEditor v0.1";
         public mainForm()
@@ -71,8 +71,7 @@ namespace NewApp
 
         private void statusBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            statusBar.Visible = (statusBar.Visible == true ? false : true);
-             
+            statusBar.Visible = (statusBar.Visible == true ? false : true);      
         }
 
         private void boldToolStripMenuItem_Click(object sender, EventArgs e)
@@ -117,6 +116,7 @@ namespace NewApp
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             SaveFile();
         }
 
@@ -127,18 +127,19 @@ namespace NewApp
 
         private void SaveFile()
         {
-          if(fileSaved)
-          {
-              rtbTextArea.SaveFile(loadedFilePath);
-              fileSaved = true;
-          }
-          else
-          {
-              if (dlgSaveFile.ShowDialog() == DialogResult.OK)
-              {
-                  rtbTextArea.SaveFile(dlgSaveFile.FileName, RichTextBoxStreamType.PlainText);
-              }
-          }
+            if (!fileSaved)
+            {
+                if (dlgSaveFile.ShowDialog() == DialogResult.OK)
+                {
+                    loadedFilePath = dlgSaveFile.FileName;
+                    rtbTextArea.SaveFile(loadedFilePath, RichTextBoxStreamType.PlainText);
+                    fileSaved = true;
+                }
+                return;
+            }
+
+            rtbTextArea.SaveFile(loadedFilePath);
+          
         }
 
         
